@@ -1,26 +1,32 @@
-import { useState } from 'react';
-import viteLogo from '/vite.svg';
+import { ReactDiagram } from 'gojs-react';
+import './App.css';
+import { initDiagram } from './helpers/initDiagram';
 
-function App() {
-  const [count, setCount] = useState(0);
+export const App = () => {
+  const handleModelChange = (changes) => {
+    console.log('Diagram was changed');
+  };
 
   return (
-    <>
-      <div className="flex items-center justify-center">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <div className="h-[400px] w-[400px]">
+      <ReactDiagram
+        initDiagram={initDiagram}
+        divClassName="diagram-component"
+        nodeDataArray={[
+          { key: 0, text: 'Alpha', color: 'lightblue', loc: '0 0' },
+          { key: 1, text: 'Beta', color: 'orange', loc: '150 0' },
+          { key: 2, text: 'Gamma', color: 'lightgreen', loc: '0 150' },
+          { key: 3, text: 'Delta', color: 'pink', loc: '150 150' },
+        ]}
+        linkDataArray={[
+          { key: -1, from: 0, to: 1 },
+          { key: -2, from: 0, to: 2 },
+          { key: -3, from: 1, to: 1 },
+          { key: -4, from: 2, to: 3 },
+          { key: -5, from: 3, to: 0 },
+        ]}
+        onModelChange={handleModelChange}
+      />
+    </div>
   );
-}
-
-export default App;
+};

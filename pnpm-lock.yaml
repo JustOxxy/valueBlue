@@ -11,6 +11,9 @@ importers:
       gojs:
         specifier: ^3.0.7
         version: 3.0.7
+      gojs-react:
+        specifier: ^1.1.2
+        version: 1.1.2(gojs@3.0.7)(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -877,6 +880,12 @@ packages:
     resolution: {integrity: sha512-jhIXaOzy1sb8IyocaruWSn1TjmnBVs8Ayhcy83rmxNJ8q2uWKCAj3CnJY+KpGSXCueAPc0i05kVvVKtP1t9S3g==}
     engines: {node: '>=10'}
 
+  gojs-react@1.1.2:
+    resolution: {integrity: sha512-Er01X0eSYNAdeaR072tivLrmeKKRy062Vjk5/5F/5PhJ17aCNU+XYx/M5jYe9y2ugbSkYDf9IYB7rsOamHdcgA==}
+    peerDependencies:
+      gojs: '>=2.1.22'
+      react: '>=16.0.0'
+
   gojs@3.0.7:
     resolution: {integrity: sha512-Z25eqnmDaj1LHvoo+3GCIKWaI2LfejczIe7MhI5YUV+8brT198J2H4VEHoJtvS/llXy28i1FcxxjDPRpjEVFoA==}
 
@@ -1381,6 +1390,9 @@ packages:
 
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+
+  tslib@2.5.3:
+    resolution: {integrity: sha512-mSxlJJwl3BMEQCUNnxXBU9jP4JBktcEGhURcPR6VQVlnP0FdDEsIaz0C35dXNGLyRfrATNofF0F5p2KPxQgB+w==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -2303,6 +2315,12 @@ snapshots:
       merge2: 1.4.1
       slash: 3.0.0
 
+  gojs-react@1.1.2(gojs@3.0.7)(react@18.3.1):
+    dependencies:
+      gojs: 3.0.7
+      react: 18.3.1
+      tslib: 2.5.3
+
   gojs@3.0.7: {}
 
   graphemer@1.4.0: {}
@@ -2716,6 +2734,8 @@ snapshots:
       typescript: 5.5.3
 
   ts-interface-checker@0.1.13: {}
+
+  tslib@2.5.3: {}
 
   type-check@0.4.0:
     dependencies:
