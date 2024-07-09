@@ -4,7 +4,7 @@ import { getNodeColor } from './getNodeColor';
 export const getDiagramNodes = () => {
   const nodes = [];
 
-  for (let i = 0; i < 10000; i++) {
+  for (let i = 0; i < 5000; i++) {
     const nodeX = 0;
     const nodeY = i * NODE_Y_STEP;
 

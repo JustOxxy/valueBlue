@@ -39,5 +39,12 @@ export const initDiagram = () => {
         .bindTwoWay('text'),
     );
 
+  diagram.linkTemplate = new go.Link() // the whole link panel
+    .add(
+      new go.Shape(), // the link shape, default black stroke
+      new go.Shape({ toArrow: 'Standard' }),
+      new go.TextBlock({ segmentOffset: new go.Point(0, -10), segmentOrientation: go.Orientation.Upright }) // this is a Link label
+        .bind('text'),
+    );
   return diagram;
 };

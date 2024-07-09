@@ -21,7 +21,7 @@ const hslToHex = (hue: number, saturation: number, lightness: number) => {
 };
 
 export const getNodeColor = (index: number, lightness: number) => {
-  const hue = (index * 360) / 10000; // Evenly distribute hues
+  const hue = (index * 360) / 5000; // Evenly distribute hues
   const saturation = 100;
 
   return hslToHex(hue, saturation, lightness);

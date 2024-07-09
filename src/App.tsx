@@ -3,6 +3,7 @@ import './App.css';
 import { initDiagram } from './helpers/initDiagram';
 import { useMemo } from 'react';
 import { getDiagramNodes } from './helpers/getDiagramNodes';
+import { getDiagramLinks } from './helpers/getDiagramLinks';
 
 export const App = () => {
   const handleModelChange = (changes) => {
@@ -10,6 +11,7 @@ export const App = () => {
   };
 
   const nodes = useMemo(() => getDiagramNodes(), []);
+  const links = useMemo(() => getDiagramLinks(), []);
 
   return (
     <div className="h-[400px] w-[400px]">
@@ -17,13 +19,7 @@ export const App = () => {
         initDiagram={initDiagram}
         divClassName="diagram-component"
         nodeDataArray={nodes}
-        // linkDataArray={[
-        //   { key: -1, from: 0, to: 1 },
-        //   { key: -2, from: 0, to: 2 },
-        //   { key: -3, from: 1, to: 1 },
-        //   { key: -4, from: 2, to: 3 },
-        //   { key: -5, from: 3, to: 0 },
-        // ]}
+        linkDataArray={links}
         onModelChange={handleModelChange}
       />
     </div>
