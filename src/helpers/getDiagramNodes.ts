@@ -9,8 +9,13 @@ export const getDiagramNodes = () => {
     const nodeY = i * NODE_Y_STEP;
 
     nodes.push(
-      { key: i, text: `Node-${i + 1}`, color: getNodeColor(i, 80), loc: `${nodeX} ${nodeY}`, figure: 'Rectangle' },
-      { key: -1 - i, text: '', color: getNodeColor(i, 50), loc: `${nodeX + 200} ${nodeY}`, figure: 'Circle' },
+      { key: i, text: `N-${i + 1}`, color: getNodeColor(i, 80), loc: `${nodeX} ${nodeY}` },
+      {
+        key: -1 - i,
+        text: `N-${i + 5000}`,
+        color: getNodeColor(i, 50),
+        loc: `${nodeX + 200} ${nodeY}`,
+      },
     );
   }
 

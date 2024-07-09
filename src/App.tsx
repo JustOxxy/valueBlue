@@ -14,7 +14,7 @@ export const App = () => {
   const links = useMemo(() => getDiagramLinks(), []);
 
   return (
-    <div className="h-[400px] w-[400px]">
+    <div className="h-screen w-screen">
       <ReactDiagram
         initDiagram={initDiagram}
         divClassName="diagram-component"
