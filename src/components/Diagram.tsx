@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ContextMenu } from './ContextMenu';
 import { ReactDiagram } from 'gojs-react';
 import { useMemo } from 'react';
@@ -7,12 +7,15 @@ import { initDiagram } from '../helpers/initDiagram';
 import { getDiagramNodes } from '../helpers/getDiagramNodes';
 import { getDiagramLinks } from '../helpers/getDiagramLinks';
 import { Dropdown } from './Dropdown';
+import { SavingStatus } from './SavingStatus';
 
 export const Diagram = () => {
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
   const [contextMenuAnchor, setContextMenuAnchor] = useState({ x: 0, y: 0 });
   const [contextMenuNode, setContextMenuNode] = useState<go.Part | null>(null);
   const [contextMenuLink, setContextMenuLink] = useState<go.Part | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveTimeout, setSaveTimeout] = useState<number | null>(null);
   const diagramRef = useRef<go.Diagram | null>(null);
 
   const init = () => {
@@ -74,30 +77,48 @@ export const Diagram = () => {
     }
   };
 
-  const handleModelChange = (changes) => {
-    console.log('Diagram was changed');
+  const handleModelChange = () => {
+    setIsSaving(true);
+    if (saveTimeout) {
+      clearTimeout(saveTimeout);
+    }
+    const timeout = setTimeout(() => {
+      setIsSaving(false);
+    }, 5000);
+    setSaveTimeout(timeout);
   };
+
+  useEffect(() => {
+    return () => {
+      if (saveTimeout) {
+        clearTimeout(saveTimeout);
+      }
+    };
+  }, [saveTimeout]);
 
   const nodes = useMemo(() => getDiagramNodes(), []);
   const links = useMemo(() => getDiagramLinks(), []);
 
   return (
-    <div>
-      <div className="h-96 w-full">
+    <div className="flex w-full flex-col gap-4 p-4">
+      <SavingStatus isSaving={isSaving} />
+
+      <div>
         <ReactDiagram
           initDiagram={init}
-          divClassName="w-full h-full border border-black"
+          divClassName="w-full h-96 border border-black"
           nodeDataArray={nodes}
           linkDataArray={links}
           onModelChange={handleModelChange}
         />
+        <ContextMenu
+          isLinkSelected={!!contextMenuLink}
+          anchorPoint={contextMenuAnchor}
+          showMenu={contextMenuVisible}
+          handleMenuItemClick={handleMenuItemClick}
+        />
       </div>
-      <ContextMenu
-        isLinkSelected={!!contextMenuLink}
-        anchorPoint={contextMenuAnchor}
-        showMenu={contextMenuVisible}
-        handleMenuItemClick={handleMenuItemClick}
-      />
+
       <Dropdown dropdownOptions={nodes.map((node) => node.text)} onOptionSelect={handleOptionSelect} />
     </div>
   );
