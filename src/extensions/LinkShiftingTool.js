@@ -21,7 +21,7 @@
  */
 import go from 'gojs';
 
-export default class LinkShiftingTool extends go.Tool {
+export class LinkShiftingTool extends go.Tool {
   /**
    * Constructs a LinkShiftingTool and sets the handles and name of the tool.
    */
