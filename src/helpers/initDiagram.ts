@@ -61,7 +61,8 @@ export const initDiagram = ({
         cursor: 'pointer',
       })
         // Shape.fill is bound to Node.data.color
-        .bind('fill', 'color'),
+        .bind('fill', 'color')
+        .bindObject('background', 'isHighlighted', (h) => (h ? 'orange' : 'transparent')),
       new go.TextBlock({ margin: 8, editable: true }) // some room around the text
         .bindTwoWay('text')
         .bind('font', 'fontSize', (size) => `bold ${size}px sans-serif`),
