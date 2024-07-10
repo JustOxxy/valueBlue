@@ -1,5 +1,5 @@
-import { SavedIcon } from '../assets/SavedIcon';
-import { SavingIcon } from '../assets/SavingIcon';
+import { SavedIcon } from '../icons/SavedIcon';
+import { SavingIcon } from '../icons/SavingIcon';
 
 interface SavingStatusProps {
   isSaving: boolean;

@@ -1,30 +1,42 @@
-# React + TypeScript + Vite
+# ValueBlue
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Create a diagram and add
 
-Currently, two official plugins are available:
+- 10K nodes (simple template with a color and a text on it)
+- a shape (circle for example)
+- 5k links (one link between every node/shape).
+- a label for every link
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. Every element has at least different color and text on it. Also, every node and shape should
+   be resizable.
 
-## Expanding the ESLint configuration
+3. Enable:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- linking tool
+- link shifting tool
+- relinking tool
 
-- Configure the top-level `parserOptions` property like this:
+4. Create a custom context menu (right click) for the nodes and for the links. Add one clickable
+   element on the context menu, which can change the font size of the text. For the nodes to
+   change twice as big as was before, for the links, twice as small.
+   Implement a dropdown with nodes displayed on the diagram. When the user selects a node
+   from the dropdown the diagram highlights the node in the canvas.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+5. Above your diagram, create a saved icon.
+
+6. Every time something changes on your diagram (ex. position, size, text, etc), switch the saved
+   icon into saving icon for 5 seconds.
+
+7. After that change back to saved.
+
+## Installation
+
+```sh
+pnpm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## To run
+
+```sh
+pnpm dev
+```
