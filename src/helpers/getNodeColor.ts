@@ -1,4 +1,4 @@
-const hslToHex = (hue: number, saturation: number, lightness: number) => {
+export const hslToHex = (hue: number, saturation: number, lightness: number) => {
   // Normalize lightness to 0-1
   lightness /= 100;
 

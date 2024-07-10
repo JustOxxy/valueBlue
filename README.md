@@ -40,3 +40,9 @@ pnpm install
 ```sh
 pnpm dev
 ```
+
+## To run unit tests
+
+```sh
+pnpm test
+```
